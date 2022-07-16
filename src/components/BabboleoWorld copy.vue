@@ -1,22 +1,22 @@
 <template>
-  <!-- `container -->
+  <!-- CONTAINER -->
   <div class="container">
-    <!-- top -->
+    <!-- TOP -->
     <div>
-      <!-- title and button -->
+      <!-- TITLE -->
       <div class="topContainer">
         <h1>CIAO LELE INIZIA A GIOCARE</h1>
+        <!-- SELECTION OF THE LEVEL -->
         <button>GIOCA</button>
       </div>
     </div>    
-    <!-- bottom -->
+    <!-- BOTTOM -->
     <div>
-      <!-- playgorund -->
-      <div class="playground">
-        <!-- run a v-for on the crocodilesArray array to create cards  -->
-        <!-- added the click event to change the display mode of the card's img -->
-        <div :id="`a-${key}`" class="card" v-for="(croc, key) in crocodilesArray" :key="key" @click="selectCard(croc, key)">
-        <!-- added the id to select the img in the function 'selectCard' -->
+      <!-- PLAYGROUND -->
+      <div id="playground">
+        <!-- CARDS -->
+        <!-- run a v-for on the crocodilesArray to create cards and added the click event -->
+        <div class="card" v-for="(croc, key) in crocodilesArray" :key="key" @click="selectCard(croc, key)">
           <img :id="`ab-${key}`" :src="require(`@/assets/img/${croc.img}`)" alt="Croc">
         </div>
       </div>
@@ -32,8 +32,12 @@ export default {
   },
   data() {
     return {
+      // choosed number of cards in the game 
+      cardsNumber: 16,
       // array for the imgs comparison
       comparisonArray: [],
+      // array of img ids to change the display mode of the imgs if the imgs selected are not the same
+      idArray: [],
       // array for the ending of the game
       endingArray: [],
       // array for the cards
@@ -47,7 +51,11 @@ export default {
           selected: false,
         },
         {
-          img: "cartoon-crocodile-vector-21277180.jpg",
+          img: "posters-krokodil.jpg.jpg",
+          selected: false,
+        },
+        {
+          img: "posters-krokodil.jpg.jpg",
           selected: false,
         },
         {
@@ -103,35 +111,62 @@ export default {
   },
   methods: {
     selectCard(croc, key) {
-      // depending on truthfulness of the selected 
+      // if the selected value of the card is false
       if (croc.selected == false) {
         // change selected value of the card 
         croc.selected = true; 
         // change the display mode of the card's img
         document.getElementById(`ab-${key}`).style.display = "inline-block";
+        // push the id of the img in the ids array
+        this.idArray.push(`ab-${key}`);
         // push the obj in the comparison array
         this.comparisonArray.push(croc);
         // after the second card selection
         if (this.comparisonArray.length == 2) {
-          // if the img of obj are the same
+          // if the img of objs are the same
           if (this.comparisonArray[0].img == this.comparisonArray[1].img) {
-            // push the first obj of comparisonArray in to endingArray
-            this.endingArray.push(this.comparisonArray[0]);
+            // push objs of comparisonArray in to endingArray
+            this.endingArray.push(this.comparisonArray[0], this.comparisonArray[1]);
             // remove the objts from comparisonArray
             this.comparisonArray.splice(0, 2);
-            alert("hai 0 elementi nell'array");
+            // remove the ids from idsArray
+            this.idArray.splice(0, 2);
+            // if the number of obj in the endingArray is the same of the cardsNumber the game is ended
+            if (this.endingArray.length == this.cardsNumber) {
+              alert('hai vinto!')
+            }
+            // if the img of objs are not the same
+          } else if (this.comparisonArray[0].img !== this.comparisonArray[1].img) { 
+            // change the display imgs of both selected cards to none
+            document.getElementById(this.idArray[0]).style.display = "none";
+            document.getElementById(this.idArray[1]).style.display = "none";
+            // remove the ids from idArray
+            this.idArray.splice(0, 2);
+            // change the card selected value to false
+            this.crocodilesArray.forEach(obj => {
+              if (this.comparisonArray.includes(obj)) {
+                obj.selected = false;
+              }
+            });
+            // remove the objts from comparisonArray
+            this.comparisonArray.splice(0, 2);
           }
         }
+        // if the selected value of the card is true
       } else {
-        croc.selected = false;
-        document.getElementById(`ab-${key}`).style.display = "none";
+        if (!this.endingArray.includes(croc)) {
+          // remove the objts from comparisonArray
+          this.comparisonArray.splice(0, 1);
+          // remove the id from idArray
+          this.idArray.splice(0, 1);
+          // change the card selected value in false
+          croc.selected = false;
+          // change the card img display mode in none
+          document.getElementById(`ab-${key}`).style.display = "none";
+        } else {
+          alert('Hai giá indovinato questa carta');
+        }
       }
-      // 1- creo due array vuoti (uno per il confronto e uno per la fine del gioco)
-      // 2- la lunghezza dell'array é minore di 2
-      // 3- vai avanti
-      // 4- la lunghezza dell'array é maggiore o uguale a 2
-      // 5- se img sono uguali allora allert, aggiungo card all'array e poi la card cambia display in none 
-      // 6- se img sono diverse le img display none e l´array viene svuotato.
     },
   }
 }
@@ -149,14 +184,14 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-.playground {
+#playground {
   padding: 2rem;
   border: 2px solid black;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.playground .card {
+#playground .card {
   width: 100px;
   height: 100px;
   margin: 10px;
