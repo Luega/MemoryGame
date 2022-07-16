@@ -59,51 +59,51 @@ export default {
           selected: false,
         },
         {
-          img: "cartoon-crocodile-vector-21277180.jpg",
+          img: "gaetano-cessati-YOX8ZMTo7hk-unsplash.jpg",
           selected: false,
         },
         {
-          img: "cartoon-crocodile-vector-21277180.jpg",
+          img: "gaetano-cessati-YOX8ZMTo7hk-unsplash.jpg",
           selected: false,
         },
         {
-          img: "cartoon-crocodile-vector-21277180.jpg",
+          img: "jack-kelly-gAvQfrHwbgY-unsplash.jpg",
           selected: false,
         },
         {
-          img: "cartoon-crocodile-vector-21277180.jpg",
+          img: "jack-kelly-gAvQfrHwbgY-unsplash.jpg",
           selected: false,
         },
         {
-          img: "cartoon-crocodile-vector-21277180.jpg",
+          img: "lisa-yount-POKb4uUOizU-unsplash.jpg",
           selected: false,
         },
         {
-          img: "cartoon-crocodile-vector-21277180.jpg",
+          img: "lisa-yount-POKb4uUOizU-unsplash.jpg",
           selected: false,
         },
         {
-          img: "cartoon-crocodile-vector-21277180.jpg",
+          img: "rae-wallis-0P0_fMu-XFs-unsplash.jpg",
           selected: false,
         },
         {
-          img: "cartoon-crocodile-vector-21277180.jpg",
+          img: "rae-wallis-0P0_fMu-XFs-unsplash.jpg",
           selected: false,
         },
         {
-          img: "cartoon-crocodile-vector-21277180.jpg",
+          img: "shelly-collins-YppMBEPyfFQ-unsplash.jpg",
           selected: false,
         },
         {
-          img: "cartoon-crocodile-vector-21277180.jpg",
+          img: "shelly-collins-YppMBEPyfFQ-unsplash.jpg",
           selected: false,
         },
         {
-          img: "cartoon-crocodile-vector-21277180.jpg",
+          img: "simon-watkinson-qdg2Hxyjz4M-unsplash.jpg",
           selected: false,
         },
         {
-          img: "cartoon-crocodile-vector-21277180.jpg",
+          img: "simon-watkinson-qdg2Hxyjz4M-unsplash.jpg",
           selected: false,
         }
       ]
@@ -137,19 +137,21 @@ export default {
             }
             // if the img of objs are not the same
           } else if (this.comparisonArray[0].img !== this.comparisonArray[1].img) { 
-            // change the display imgs of both selected cards to none
-            document.getElementById(this.idArray[0]).style.display = "none";
-            document.getElementById(this.idArray[1]).style.display = "none";
-            // remove the ids from idArray
-            this.idArray.splice(0, 2);
-            // change the card selected value to false
-            this.crocodilesArray.forEach(obj => {
-              if (this.comparisonArray.includes(obj)) {
-                obj.selected = false;
-              }
-            });
-            // remove the objts from comparisonArray
-            this.comparisonArray.splice(0, 2);
+            setTimeout(() => {
+              // change the display imgs of both selected cards to none
+              document.getElementById(this.idArray[0]).style.display = "none";
+              document.getElementById(this.idArray[1]).style.display = "none";
+              // remove the ids from idArray
+              this.idArray.splice(0, 2);
+              // change the card selected value to false
+              this.crocodilesArray.forEach(obj => {
+                if (this.comparisonArray.includes(obj)) {
+                  obj.selected = false;
+                }
+              });
+              // remove the objts from comparisonArray
+              this.comparisonArray.splice(0, 2);
+            }, 1000);
           }
         }
         // if the selected value of the card is true
