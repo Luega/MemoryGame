@@ -30,6 +30,43 @@
         </div>
       </div>
     </div>
+
+
+    <div class="box">
+      <h1 class="text-crocodile">you win</h1>
+      <div class="head">
+        <div class="eye-left"></div>
+        <div class="eye-right"></div>
+        <div class="mouth"></div>
+        <div class="tooth"></div>
+        <div class="cheek"></div>
+        <div class="cheek-copy"></div>
+        <div class="nose">
+          <div class="nose-hole-left"></div>
+          <div class="nose-hole-right"></div>
+        </div>
+      </div>
+      <div class="body">
+        <div class="belly">
+          <div class="stripes"></div>
+        </div>
+      </div>
+      <div class="body-copy">
+        <div class="fur-top"></div>
+        <div class="fur-middle"></div>
+        <div class="fur-bottom"></div>
+      </div>
+      <div class="hat-container">
+        <div class="hat-base">
+          <div class="hat-ribbon"></div>
+        </div>
+        <div class="hat-bottom"></div>
+        <div class="hat-feather-top"></div>
+        <div class="hat-feather-bottom"></div>
+      </div>
+    </div>
+    
+
   </div>
 </template>
 
@@ -338,5 +375,244 @@ export default {
   width: 100%;
   height: 100%;
   display: none;
+}
+
+//ending crocodile
+.box{
+  position: relative;
+  margin: auto;
+  margin-top: 8%;
+  width: 600px;
+  height: 420px;
+  background: none;
+  border: solid 3px white; 
+  background: #F0F3AE;
+  border: 3px solid #4F3130;
+}
+.text-crocodile {
+  margin: 0.3rem 4rem 0 4rem;
+  padding: 0.5rem 3rem;
+  color: black;
+  text-align: center;
+  text-transform: uppercase;
+  background-color:#C1DEAE;
+  box-shadow: 0 5px 2px #219F94;
+}
+.head{
+  position:absolute;
+  background: #A8B956;
+  width: 25%;
+  height: 17%;
+  top: 35%;
+  left: 30%;
+  border-bottom-left-radius: 15px;
+  z-index:1;
+}
+.mouth{
+  position:absolute;
+  width: 110px;
+  height: 2px;
+  background: #422218;
+  top: 55%;
+}
+.tooth{
+  position:absolute;
+  width: 8%;
+  height: 22%;
+  background: #fff;
+  -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  top:33%;
+  left: 30%;
+}
+.cheek{
+  position:absolute;
+  width: 18%;
+  height: 36%;
+  background: tomato;
+  border-radius: 50%;
+  top:37%;
+  right: 16%;
+}
+.eye-right{
+  position:absolute;
+  width: 6%;
+  height: 12%;
+  background: #422218;
+  border-radius:50%;
+  top: 20%;
+  right: 3%;
+}
+.eye-left{
+  position:absolute;
+  width: 6%;
+  height: 12%;
+  background: #422218;
+  border-radius:50%;
+  top: 12%;
+  right: 20%;
+}
+.nose{
+  position:absolute;
+  width: 27%;
+  height: 40%;
+  background: #A8B956;
+  top: -25%;
+}
+.nose-hole-left{
+  position:absolute;
+  background: #422218;
+  width:15%;
+  height: 60%;
+  border-radius: 50%;
+  top:30%;
+  left:20%;
+}
+.nose-hole-right{
+  position:absolute;
+  background: #422218;
+  width:15%;
+  height: 60%;
+  border-radius: 50%;
+  top:30%;
+  right:20%;
+}
+.body{
+  position:absolute;
+  background: #A8B956;
+  width: 20%;
+  height: 60%;
+  top: 35%;
+  left: 40%;  
+  -webkit-clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+}
+.body-copy{
+  position:absolute;
+  background: #F0F3AE;
+  width: 20%;
+  height: 60%;
+  top: 35%;
+  left: 56%; 
+}
+.fur-top{
+  position:absolute;
+  background: #879E2D;
+  width: 50%;
+  height: 25%;
+  top: 20%;
+  -webkit-clip-path: polygon(100% 50%, 0 0, 0 100%);
+  clip-path: polygon(100% 50%, 0 0, 0 100%);
+   z-index:1;
+}
+.fur-middle{
+  position:absolute;
+  background: #879E2D;
+  width: 50%;
+  height: 25%;
+  top: 45%;
+  -webkit-clip-path: polygon(100% 50%, 0 0, 0 100%);
+  clip-path: polygon(100% 50%, 0 0, 0 100%);
+   z-index:1;
+}
+.fur-bottom{
+  position:absolute;
+  background: #879E2D;
+  width: 50%;
+  height: 25%;
+  bottom: 5%;
+  -webkit-clip-path: polygon(100% 50%, 0 0, 0 100%);
+  clip-path: polygon(100% 50%, 0 0, 0 100%);
+   z-index:1;
+}
+.hat-container{
+  position:absolute;
+  background:none;
+  height:20%;
+  width:10%;
+  right:40%;
+  top:14%;
+}
+.hat-base{
+  position:absolute;
+  background: #4F3130;
+  height: 70%;
+  width: 70%; 
+  top:10%;
+  left:15%;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+.hat-ribbon{
+  position:absolute;
+  background: white;
+  height: 15%;
+  width:100%;
+  bottom:0;
+  z-index:1;
+}
+.hat-bottom{
+  position:absolute;
+  background:#4F3130;
+  height: 14%;
+  width:100%;
+  bottom:6%;
+}
+.hat-feather-top{
+  position:absolute;
+  background: #AA5042;
+  height:55%;
+  width:50%;
+  -webkit-clip-path: polygon(25% 0, 75% 0, 61% 100%, 36% 100%);
+  clip-path: polygon(25% 0, 75% 0, 61% 100%, 36% 100%);
+  border-top-left-radius: 90px;
+  border-top-right-radius: 90px;
+  top: 20%;
+  right:-7%;
+  transform: rotate(20deg);
+}
+.hat-feather-bottom{
+  position:absolute;
+  background:#D8BD8A;
+  height:45%;
+  width:40%;
+  -webkit-clip-path: polygon(25% 0, 75% 0, 61% 100%, 36% 100%);
+  clip-path: polygon(25% 0, 75% 0, 61% 100%, 36% 100%);
+  border-top-left-radius: 90px;
+  border-top-right-radius: 90px;
+  top: 33%;
+  right:-10%;
+  transform: rotate(40deg);
+}
+.belly{
+  position:absolute;
+  top:25%;
+  left:-35%;
+  width: 100%;
+  height: 80%;
+  -webkit-clip-path: ellipse(16% 40% at 50% 50%);
+  clip-path: ellipse(16% 40% at 50% 50%);
+  transform: rotate(5deg);
+}
+.stripes{
+  height:100%;
+  width:100%;
+  background: linear-gradient(
+  to bottom,
+  #BCCC61,
+  #BCCC61 50%,
+  #879E2D 50%,
+  #879E2D
+  );
+  background-size: 100% 10px;
+}
+//animation for text-crocodile
+@keyframes big-text {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
 }
 </style>
