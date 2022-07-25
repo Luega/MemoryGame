@@ -2,29 +2,27 @@
   <!-- CONTAINER -->
   <div class="container">
     <!-- TOP -->
-    <div>
-      <!-- TITLE -->
-      <div class="topContainer">
-        <div>
-          <h1>Seleziona il livello</h1>
-        </div>
-        <!-- SELECTION OF THE LEVEL -->
-        <div>
-          <!-- the user will select the level from an array that will set the number of the cards -->
-          <select v-model="cardsNumber">
-            <option v-for="(level, keya) in levels" :key="keya" :value="level.value">
-              {{ level.text }}
-            </option>
-          </select>
-          <!-- Clicking the button, the cards will be shown on the playgound with the number of cards related to the choosen level -->
-          <button @click="createRandomArray()">GIOCA</button>
-        </div>
+    <!-- TITLE -->
+    <div class="container_top">
+      <div>
+        <h1>Memory di Lele e Bea</h1>
       </div>
-    </div>    
+      <!-- SELECTION OF THE LEVEL -->
+      <div class="choiceBox">
+        <!-- the user will select the level from an array that will set the number of the cards -->
+        <select class="choiceBox_select" v-model="cardsNumber">
+          <option v-for="(level, keya) in levels" :key="keya" :value="level.value">
+            {{ level.text }}
+          </option>
+        </select>
+        <!-- Clicking the button, the cards will be shown on the playgound with the number of cards related to the choosen level -->
+        <button class="choiceBox_button" @click="createRandomArray()">GIOCA</button>
+      </div>
+    </div>
     <!-- BOTTOM -->
     <div>
       <!-- PLAYGROUND -->
-      <div id="playground">
+      <div class="container_bottom">
         <!-- CARDS -->
         <!-- run a v-for on the gamingCardArray to show cards and added the click event -->
         <div class="card" v-for="(croc, key) in gamingCardsArray" :key="key" @click="selectCard(croc, key)">
@@ -48,9 +46,9 @@ export default {
       // option for the input
       levels: [
         { text: 'Luega', value: '6' },
-        { text: 'Irene', value: '10' },
-        { text: 'Alessio', value: '14' },
-        { text: 'Marta', value: '20' }
+        { text: 'Irene', value: '12' },
+        { text: 'Alessio', value: '18' },
+        { text: 'Marta', value: '24' }
       ],
       // array for the imgs comparison
       comparisonArray: [],
@@ -116,6 +114,22 @@ export default {
         },
         {
           img: "shelly-collins-YppMBEPyfFQ-unsplash.jpg",
+          selected: false,
+        },
+        {
+          img: "simon-watkinson-qdg2Hxyjz4M-unsplash.jpg",
+          selected: false,
+        },
+        {
+          img: "simon-watkinson-qdg2Hxyjz4M-unsplash.jpg",
+          selected: false,
+        },
+        {
+          img: "simon-watkinson-qdg2Hxyjz4M-unsplash.jpg",
+          selected: false,
+        },
+        {
+          img: "simon-watkinson-qdg2Hxyjz4M-unsplash.jpg",
           selected: false,
         },
         {
@@ -246,37 +260,83 @@ export default {
 
 <style scoped lang="scss">
 .container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #F2F5C8;
+}
+.container_top {
+  width: 70%;
+  margin: 1rem auto 1rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F2F5C8;
+}
+.container_top h1 {
+  margin-bottom: 2rem;
+  padding: 0.5rem 3rem;
+  color: black;
+  text-transform: uppercase;
+  background-color:#C1DEAE;
+  box-shadow: 5px 5px 2px #219F94;
+}
+.container_top .choiceBox {
   width: 100%;
-  height: 100vh;
-  padding: 2rem;
-  text-align: center;
-}
-.topContainer {
-  padding: 2rem;
   display: flex;
-  justify-content: space-between;
-}
-#playground {
-  padding: 2rem;
-  border: 2px solid black;
-  display: flex;
-  flex-wrap: wrap;
   justify-content: center;
 }
-#playground .card {
-  width: 100px;
-  height: 100px;
-  margin: 10px;
-  background-color: yellow;
-  border: 1px solid black;
-  flex-basis: calc((100% / 6) - 22px);
+.choiceBox_select {
+  margin-right: 4rem;
+  padding: 0.5rem;
+  color: black;
+  font-size: larger;
+  font-weight: bolder;
+  background-color: #C1DEAE;
+  border: none;
+  box-shadow: 5px 5px 2px #219F94;
+  outline: none;
+  cursor: pointer;
 }
-.card img {
+.choiceBox_button {
+  padding: 0.5rem 1.5rem;
+  color: black;
+  font-size: large;
+  font-weight: bold;
+  background-color: #C1DEAE;
+  border: none;
+  box-shadow: 5px 5px 2px #219F94;
+  cursor: pointer;
+}
+.container_bottom {
+  width: 85%;
+  min-height: 30vh;
+  margin: 1rem auto 0 auto;
+  background-color: #F2F5C8;
+  border-top: 1px dotted black;
+  border-bottom: 1px dotted black;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.container_bottom .card {
+  flex-basis: calc((100% / 6) - 30px);
+  height: 100px;
+  margin: 15px;
+  background-color: #219F94;
+  border-radius: 10px;
+  box-shadow: 5px 5px 2px #C1DEAE;
+  overflow: hidden;
+  transition-duration: 0.5s;
+  transition-property: transform;
+  cursor: pointer;
+}
+.container_bottom .card:hover {
+  transform: scale(1.1);
+}
+.card_img {
   width: 100%;
   height: 100%;
-  display: none;
-}
-.card_img--displayNone {
   display: none;
 }
 </style>
