@@ -30,43 +30,6 @@
         </div>
       </div>
     </div>
-
-
-    <div class="box">
-      <h1 class="text-crocodile">you win</h1>
-      <div class="head">
-        <div class="eye-left"></div>
-        <div class="eye-right"></div>
-        <div class="mouth"></div>
-        <div class="tooth"></div>
-        <div class="cheek"></div>
-        <div class="cheek-copy"></div>
-        <div class="nose">
-          <div class="nose-hole-left"></div>
-          <div class="nose-hole-right"></div>
-        </div>
-      </div>
-      <div class="body">
-        <div class="belly">
-          <div class="stripes"></div>
-        </div>
-      </div>
-      <div class="body-copy">
-        <div class="fur-top"></div>
-        <div class="fur-middle"></div>
-        <div class="fur-bottom"></div>
-      </div>
-      <div class="hat-container">
-        <div class="hat-base">
-          <div class="hat-ribbon"></div>
-        </div>
-        <div class="hat-bottom"></div>
-        <div class="hat-feather-top"></div>
-        <div class="hat-feather-bottom"></div>
-      </div>
-    </div>
-    
-
   </div>
 </template>
 
@@ -228,10 +191,45 @@ export default {
             this.comparisonArray.splice(0, 2);
             // remove the ids from idsArray
             this.idArray.splice(0, 2);
-            // if the number of obj in the endingArray is the same of the cardsNumber the game is ended
+            // if the number of obj in the endingArray is the same of the cardsNumber the game is ended and ending-crocodile will be shown
             if (this.endingArray.length == this.cardsNumber) {
               setTimeout(() => {
-                alert('hai vinto!')
+                document.querySelector('.container_bottom').innerHTML = 
+                ` 
+                <div class="box">
+                  <h1 class="text-crocodile">you win</h1>
+                  <div class="head">
+                    <div class="eye-left"></div>
+                    <div class="eye-right"></div>
+                    <div class="mouth"></div>
+                    <div class="tooth"></div>
+                    <div class="cheek"></div>
+                    <div class="cheek-copy"></div>
+                    <div class="nose">
+                      <div class="nose-hole-left"></div>
+                      <div class="nose-hole-right"></div>
+                    </div>
+                  </div>
+                  <div class="body">
+                    <div class="belly">
+                      <div class="stripes"></div>
+                    </div>
+                  </div>
+                  <div class="body-copy">
+                    <div class="fur-top"></div>
+                    <div class="fur-middle"></div>
+                    <div class="fur-bottom"></div>
+                  </div>
+                  <div class="hat-container">
+                    <div class="hat-base">
+                      <div class="hat-ribbon"></div>
+                    </div>
+                    <div class="hat-bottom"></div>
+                    <div class="hat-feather-top"></div>
+                    <div class="hat-feather-bottom"></div>
+                  </div>
+                </div>
+                `;
               }, 1000);
             }
             // if the img of objs are not the same
@@ -295,7 +293,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .container {
   min-height: 100vh;
   display: flex;
@@ -380,14 +378,14 @@ export default {
 //ending crocodile
 .box{
   position: relative;
-  margin: auto;
-  margin-top: 8%;
+  margin: 1rem auto;
   width: 600px;
   height: 420px;
   background: none;
   border: solid 3px white; 
   background: #F0F3AE;
   border: 3px solid #4F3130;
+  animation: ending-croc 5s;
 }
 .text-crocodile {
   margin: 0.3rem 4rem 0 4rem;
@@ -606,13 +604,13 @@ export default {
   );
   background-size: 100% 10px;
 }
-//animation for text-crocodile
-@keyframes big-text {
+//animation for ending-crocodile
+@keyframes ending-croc {
   from {
-    transform: scale(1);
+    transform: scale(0);
   }
   to {
-    transform: scale(1.2);
+    transform: scale(1);
   }
 }
 </style>
