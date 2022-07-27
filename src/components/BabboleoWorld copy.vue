@@ -33,7 +33,7 @@
       <div class="container_bottom">
         <!-- CARDS -->
         <!-- run a v-for on the gamingCardArray to show cards and added the click event -->
-        <div :id="`card-${key}`" class="card" v-for="(card, key) in gamingCardsArray" :key="key" @click="selectCard(card, key)">
+        <div :id="`card-${key}`" class="card" tabindex="0" v-for="(card, key) in gamingCardsArray" :key="key" @click="selectCard(card, key)" @keyup.enter="selectCard(card, key)">
           <img class="card_img" :id="`ab-${key}`" :src="require(`@/assets/img/${card.img}`)" alt="Card-img">
         </div>
       </div>
@@ -503,12 +503,14 @@ export default {
 </script>
 
 <style lang="scss">
+// CONTAINER
 .container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: #F2F5C8;
 }
+// TOP
 .container_top {
   width: 70%;
   margin: 1rem auto 1rem auto;
@@ -530,6 +532,7 @@ export default {
   display: flex;
   justify-content: center;
 }
+// SELECT
 .choiceBox_select {
   margin-right: 4rem;
   padding: 0.5rem;
@@ -549,6 +552,7 @@ export default {
 .choiceBox_select:focus {
   transform: scale(1.1);
 }
+// BUTTON
 .choiceBox_button {
   padding: 0.5rem 1.5rem;
   color: black;
@@ -569,6 +573,7 @@ export default {
 .choiceBox_button:focus {
   transform: scale(1.1);
 }
+// BOTTOM
 .container_bottom {
   width: 85%;
   min-height: 30vh;
@@ -580,6 +585,7 @@ export default {
   align-items: center;
   flex-wrap: wrap;
 }
+// CARD
 .container_bottom .card {
   flex-basis: calc((100% / 6) - 30px);
   height: 100px;
@@ -590,8 +596,11 @@ export default {
   overflow: hidden;
   transition-duration: 0.5s;
   transition-property: transform;
+  outline: none;
   cursor: pointer;
 }
+.container_bottom .card:active,
+.container_bottom .card:focus,
 .container_bottom .card:hover {  
   transform: scale(1.1);
 }
@@ -604,7 +613,7 @@ export default {
   display: none;
 }
 
-//ending crocodile
+// ENDING CROCODILE
 .box-start,
 .box-end {
   position: relative;
@@ -836,6 +845,7 @@ export default {
   );
   background-size: 100% 10px;
 }
+// ANIMATION
 //animation for ending-crocodile
 @keyframes ending-croc {
   0% {
