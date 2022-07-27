@@ -9,14 +9,22 @@
       </div>
       <!-- SELECTION OF THE LEVEL -->
       <div class="choiceBox">
+        <!-- the user will select the player and this will select the starting array (dog or croc) -->
+        <select class="choiceBox_select" v-model="player">
+          <option :value="null" disabled hidden>Player</option>
+          <option v-for="(player, keyb) in players" :key="keyb" :value="player.value">
+            {{ player.text }}
+          </option>
+        </select>
         <!-- the user will select the level from an array that will set the number of the cards -->
         <select class="choiceBox_select" v-model="cardsNumber">
+          <option :value="null" disabled hidden>Level</option>
           <option v-for="(level, keya) in levels" :key="keya" :value="level.value">
             {{ level.text }}
           </option>
         </select>
         <!-- Clicking the button, the cards will be shown on the playgound with the number of cards related to the choosen level -->
-        <button class="choiceBox_button" @click="createRandomArray()">GIOCA</button>
+        <button class="choiceBox_button" @click="createRandomArray()">PLAY</button>
       </div>
     </div>
     <!-- BOTTOM -->
@@ -25,8 +33,8 @@
       <div class="container_bottom">
         <!-- CARDS -->
         <!-- run a v-for on the gamingCardArray to show cards and added the click event -->
-        <div class="card" v-for="(croc, key) in gamingCardsArray" :key="key" @click="selectCard(croc, key)">
-          <img class="card_img" :id="`ab-${key}`" :src="require(`@/assets/img/${croc.img}`)" alt="Croc">
+        <div :id="`card-${key}`" class="card" v-for="(card, key) in gamingCardsArray" :key="key" @click="selectCard(card, key)">
+          <img class="card_img" :id="`ab-${key}`" :src="require(`@/assets/img/${card.img}`)" alt="Card-img">
         </div>
       </div>
     </div>
@@ -43,7 +51,14 @@ export default {
     return {
       // choosed number of cards in the game 
       cardsNumber: null,
-      // option for the input
+      // choosed number who will play the game 
+      player: null,
+      // option for the player input
+      players: [
+        { text: 'Lele', value: 'lele' },
+        { text: 'Bea', value: 'bea' }
+      ],
+      // option for the level input
       levels: [
         { text: 'Luega', value: '6' },
         { text: 'Irene', value: '12' },
@@ -156,31 +171,151 @@ export default {
           img: "simon-watkinson-qdg2Hxyjz4M-unsplash.jpg",
           selected: false,
         }
+      ],
+      dogsArray: [
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
+        {
+          img: "dog-1.jpg",
+          selected: false,
+        },
       ]
     }
   },
   beforeMount () {
-    // add the cardsNumber value in local storage to the cardsNumber value in data (for the end of the game)
+    // add the cardsNumber value and player value in local storage to the cardsNumber value (for the end of the game) and player in data
+    this.player = localStorage.getItem('player');
     this.cardsNumber = localStorage.getItem('cardsNumber');
-    //create the gamingCardsArray with the number of cards that are stored in the local storage (to show the cards immediately)
-    for (let i = 0; i < localStorage.getItem('cardsNumber'); i++) {
-      this.gamingCardsArray.push(this.crocodilesArray[i]);
+    //create the gamingCardsArray with the number of cards and for the player that are stored in the local storage (to show the cards immediately)
+    // use the crocodile array if lele is the player
+    if (this.player == 'lele') {
+      // for loop to create, from the crocodilesArray, the gamingCardsArray with the right number of cards related with the choosen level 
+      for (let i = 0; i < this.cardsNumber; i++) {
+        this.gamingCardsArray.push(this.crocodilesArray[i]);
+      }
+      // get random the elements in the array
+      this.gamingCardsArray = this.gamingCardsArray.sort(() => 0.5 - Math.random());
+      // clear the HTML bottom container from crocodile welcome
+      document.querySelector('.container_bottom').innerHTML = '';
+    } else if (this.player == 'bea') {
+      // for loop to create, from the dogsArray, the gamingCardsArray with the right number of cards related with the choosen level 
+      for (let i = 0; i < this.cardsNumber; i++) {
+        this.gamingCardsArray.push(this.dogsArray[i]);
+      }
+      // get random the elements in the array
+      this.gamingCardsArray = this.gamingCardsArray.sort(() => 0.5 - Math.random());
+      // clear the HTML bottom container from crocodile welcome
+      document.querySelector('.container_bottom').innerHTML = '';
     }
-    // get random the elements in the array
-    this.gamingCardsArray = this.gamingCardsArray.sort(() => 0.5 - Math.random());
+  },
+  mounted () {
+    // if localStorage is null it will show the welcome crocodile in the bottom container
+    if (localStorage.getItem('cardsNumber') === null) {
+      this.showStartingCroc();
+    }
   },
   methods: {
-    selectCard(croc, key) {
+    selectCard(card, key) {
       // if the selected value of the card is false
-      if (croc.selected == false) {
+      if (card.selected == false) {
         // change selected value of the card 
-        croc.selected = true; 
+        card.selected = true; 
         // change the display mode of the card's img
         document.getElementById(`ab-${key}`).style.display = "inline";
         // push the id of the img in the ids array
         this.idArray.push(`ab-${key}`);
         // push the obj in the comparison array
-        this.comparisonArray.push(croc);
+        this.comparisonArray.push(card);
         // after the second card selection
         if (this.comparisonArray.length == 2) {
           // if the img of objs are the same
@@ -194,42 +329,7 @@ export default {
             // if the number of obj in the endingArray is the same of the cardsNumber the game is ended and ending-crocodile will be shown
             if (this.endingArray.length == this.cardsNumber) {
               setTimeout(() => {
-                document.querySelector('.container_bottom').innerHTML = 
-                ` 
-                <div class="box">
-                  <h1 class="text-crocodile">you win</h1>
-                  <div class="head">
-                    <div class="eye-left"></div>
-                    <div class="eye-right"></div>
-                    <div class="mouth"></div>
-                    <div class="tooth"></div>
-                    <div class="cheek"></div>
-                    <div class="cheek-copy"></div>
-                    <div class="nose">
-                      <div class="nose-hole-left"></div>
-                      <div class="nose-hole-right"></div>
-                    </div>
-                  </div>
-                  <div class="body">
-                    <div class="belly">
-                      <div class="stripes"></div>
-                    </div>
-                  </div>
-                  <div class="body-copy">
-                    <div class="fur-top"></div>
-                    <div class="fur-middle"></div>
-                    <div class="fur-bottom"></div>
-                  </div>
-                  <div class="hat-container">
-                    <div class="hat-base">
-                      <div class="hat-ribbon"></div>
-                    </div>
-                    <div class="hat-bottom"></div>
-                    <div class="hat-feather-top"></div>
-                    <div class="hat-feather-bottom"></div>
-                  </div>
-                </div>
-                `;
+                this.showEndingCroc();
               }, 1000);
             }
             // if the img of objs are not the same
@@ -252,42 +352,151 @@ export default {
             this.comparisonArray.splice(0, 2);
           }
         }
-        // if the selected value of the card is true
+      // if the selected value of the card is true
       } else {
-        if (!this.endingArray.includes(croc)) {
+        // if the card is not already matched
+        if (!this.endingArray.includes(card)) {
           // remove the objts from comparisonArray
           this.comparisonArray.splice(0, 1);
           // remove the id from idArray
           this.idArray.splice(0, 1);
           // change the card selected value in false
-          croc.selected = false;
+          card.selected = false;
           // change the card img display mode in none
           document.getElementById(`ab-${key}`).style.display = "none";
+        // if the card is already matched
         } else {
-          alert('Hai giá indovinato questa carta');
+          document.getElementById(`card-${key}`).classList.add('cardAlreadySelected');
+          setTimeout(() => {
+            document.getElementById(`card-${key}`).classList.remove('cardAlreadySelected');
+          }, 1500);
         }
       }
     },
     createRandomArray() {
       // if in local storage there isn't cardsNumber stored 
       if (localStorage.getItem('cardsNumber') === null) {
+        // set the cardsNumber value in the data with the value of the first choice and the first player (it will start with the basic level and first player)
+        if (this.player == null && this.level == null) {
+          this.player = this.players[0].value;
+          this.cardsNumber = this.levels[0].value;
+        // if there isn't the player value  
+        } else if (this.player == null) {
+          this.player = this.players[0].value;
+        // if there isn't the level value  
+        } else if (this.level == null) {
+          this.cardsNumber = this.levels[0].value;
+        }
+        // set in local Storage the player
+        localStorage.setItem('player', this.player);
         // set in local Storage the cards Number
         localStorage.setItem('cardsNumber', this.cardsNumber);
-        // for loop to create, from the crocodilesArray, the gamingCardsArray with the right number of cards related with the choosen level 
-        for (let i = 0; i < this.cardsNumber; i++) {
-          this.gamingCardsArray.push(this.crocodilesArray[i]);
+        // use the crocodile array if lele is the player
+        if (this.player == 'lele') {
+          // for loop to create, from the crocodilesArray, the gamingCardsArray with the right number of cards related with the choosen level 
+          for (let i = 0; i < this.cardsNumber; i++) {
+            this.gamingCardsArray.push(this.crocodilesArray[i]);
+          }
+          // get random the elements in the array
+          this.gamingCardsArray = this.gamingCardsArray.sort(() => 0.5 - Math.random());
+          // clear the HTML bottom container from crocodile welcome
+          document.querySelector('.container_bottom').innerHTML = '';
+        } else if (this.player == 'bea') {
+          // for loop to create, from the dogsArray, the gamingCardsArray with the right number of cards related with the choosen level 
+          for (let i = 0; i < this.cardsNumber; i++) {
+            this.gamingCardsArray.push(this.dogsArray[i]);
+          }
+          // get random the elements in the array
+          this.gamingCardsArray = this.gamingCardsArray.sort(() => 0.5 - Math.random());
+          // clear the HTML bottom container from crocodile welcome
+          document.querySelector('.container_bottom').innerHTML = '';
         }
-        // get random the elements in the array
-        this.gamingCardsArray = this.gamingCardsArray.sort(() => 0.5 - Math.random());
       // if in local storage there is cardsNumber stored (this means that we want to change level)
       } else {
         // clear the localStorage from the old cardsNumber value
         localStorage.clear();
-        // add the new cardsNumber Value in the localStorage
+        // add the new cardsNumber Value and player in the localStorage
         localStorage.setItem('cardsNumber', this.cardsNumber);
+        localStorage.setItem('player', this.player);
         // reload the page (the new cardsNumber in localStorage will be used beforeMount)
         location.reload();
       }
+    },
+    showEndingCroc() {
+      document.querySelector('.container_bottom').innerHTML = 
+      ` 
+      <div class="box-end">
+        <h1 class="text-crocodile">you win</h1>
+        <div class="head">
+          <div class="eye-left"></div>
+          <div class="eye-right"></div>
+          <div class="mouth"></div>
+          <div class="tooth"></div>
+          <div class="cheek"></div>
+          <div class="cheek-copy"></div>
+          <div class="nose">
+            <div class="nose-hole-left"></div>
+            <div class="nose-hole-right"></div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="belly">
+            <div class="stripes"></div>
+          </div>
+        </div>
+        <div class="body-copy">
+          <div class="fur-top"></div>
+          <div class="fur-middle"></div>
+          <div class="fur-bottom"></div>
+        </div>
+        <div class="hat-container">
+          <div class="hat-base">
+            <div class="hat-ribbon"></div>
+          </div>
+          <div class="hat-bottom"></div>
+          <div class="hat-feather-top"></div>
+          <div class="hat-feather-bottom"></div>
+        </div>
+      </div>
+      `;
+    },
+    showStartingCroc() {
+      document.querySelector('.container_bottom').innerHTML = 
+      ` 
+      <div class="box-start">
+        <h1 class="text-crocodile">welcome</h1>
+        <div class="head">
+          <div class="eye-left"></div>
+          <div class="eye-right"></div>
+          <div class="mouth"></div>
+          <div class="tooth"></div>
+          <div class="cheek"></div>
+          <div class="cheek-copy"></div>
+          <div class="nose">
+            <div class="nose-hole-left"></div>
+            <div class="nose-hole-right"></div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="belly">
+            <div class="stripes"></div>
+          </div>
+        </div>
+        <div class="body-copy">
+          <div class="fur-top"></div>
+          <div class="fur-middle"></div>
+          <div class="fur-bottom"></div>
+        </div>
+        <div class="hat-container">
+          <div class="hat-base">
+            <div class="hat-ribbon"></div>
+          </div>
+          <div class="hat-bottom"></div>
+          <div class="hat-feather-top"></div>
+          <div class="hat-feather-bottom"></div>
+        </div>
+      </div>
+      `;
     },
   }
 }
@@ -330,8 +539,15 @@ export default {
   background-color: #C1DEAE;
   border: none;
   box-shadow: 5px 5px 2px #219F94;
+  transition-duration: 0.5s;
+  transition-property: transform;
   outline: none;
   cursor: pointer;
+}
+.choiceBox_select:hover,
+.choiceBox_select:active,
+.choiceBox_select:focus {
+  transform: scale(1.1);
 }
 .choiceBox_button {
   padding: 0.5rem 1.5rem;
@@ -341,7 +557,17 @@ export default {
   background-color: #C1DEAE;
   border: none;
   box-shadow: 5px 5px 2px #219F94;
+  transition-duration: 0.5s;
+  transition-property: transform;
+  outline: none;
   cursor: pointer;
+}
+.choiceBox_button:hover {
+  transform: rotate(20deg) scale(1.1);
+}
+.choiceBox_button:active,
+.choiceBox_button:focus {
+  transform: scale(1.1);
 }
 .container_bottom {
   width: 85%;
@@ -366,8 +592,11 @@ export default {
   transition-property: transform;
   cursor: pointer;
 }
-.container_bottom .card:hover {
+.container_bottom .card:hover {  
   transform: scale(1.1);
+}
+.container_bottom .cardAlreadySelected {
+  animation: already-selected 0.075s infinite alternate; 
 }
 .card_img {
   width: 100%;
@@ -376,7 +605,8 @@ export default {
 }
 
 //ending crocodile
-.box{
+.box-start,
+.box-end {
   position: relative;
   margin: 1rem auto;
   width: 600px;
@@ -385,6 +615,8 @@ export default {
   border: solid 3px white; 
   background: #F0F3AE;
   border: 3px solid #4F3130;
+}
+.box-end {
   animation: ending-croc 5s;
 }
 .text-crocodile {
@@ -611,6 +843,15 @@ export default {
   }
   to {
     transform: scale(1);
+  }
+}
+//animation for already selected card
+@keyframes already-selected {
+  from {
+    transform: scale(1.1) translateX(-3px);
+  }
+  to {
+    transform: scale(1.1) translateX(3px);
   }
 }
 </style>
