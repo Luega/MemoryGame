@@ -838,10 +838,19 @@ export default {
 }
 //animation for ending-crocodile
 @keyframes ending-croc {
-  from {
+  0% {
     transform: scale(0);
   }
-  to {
+  10% {
+    transform: scale(1.1);
+  }
+  20% {
+    transform: scale(0.8);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  60% {
     transform: scale(1);
   }
 }
