@@ -419,6 +419,7 @@ export default {
         location.reload();
       }
     },
+    // function to show in bottom container the crocodile animation if the player have win
     showEndingCroc() {
       document.querySelector('.container_bottom').innerHTML = 
       ` 
@@ -457,6 +458,7 @@ export default {
       </div>
       `;
     },
+    // function to show in bottom container the welcome crocodile css/html
     showStartingCroc() {
       document.querySelector('.container_bottom').innerHTML = 
       ` 
