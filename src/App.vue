@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <BabboleoWorld />
+    <MemoryGame />
   </div>
 </template>
 
 <script>
-import BabboleoWorld from './components/BabboleoWorld copy.vue'
+import MemoryGame from './components/MemoryGame.vue'
 
 export default {
   name: 'App',
   components: {
-    BabboleoWorld
+    MemoryGame
   },
   data() {
     return {

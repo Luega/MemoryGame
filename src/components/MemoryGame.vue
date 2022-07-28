@@ -5,7 +5,7 @@
     <!-- TITLE -->
     <div class="container_top">
       <div>
-        <h1>Memory di Lele e Bea</h1>
+        <h1>Lele and Bea's Memory </h1>
       </div>
       <!-- SELECTION OF THE LEVEL -->
       <div class="choiceBox">
@@ -43,10 +43,7 @@
 
 <script>
 export default {
-  name: 'BabboleoWorld',
-  props: {
-    
-  },
+  name: 'MemoryGame',
   data() {
     return {
       // choosed number of cards in the game 
@@ -60,10 +57,10 @@ export default {
       ],
       // option for the level input
       levels: [
-        { text: 'Luega', value: '6' },
-        { text: 'Irene', value: '12' },
-        { text: 'Alessio', value: '18' },
-        { text: 'Marta', value: '24' }
+        { text: 'Easy', value: '6' },
+        { text: 'Normal', value: '12' },
+        { text: 'Hard', value: '18' },
+        { text: 'Hero', value: '24' }
       ],
       // array for the imgs comparison
       comparisonArray: [],
