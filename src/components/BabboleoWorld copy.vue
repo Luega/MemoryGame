@@ -873,4 +873,71 @@ export default {
     transform: scale(1.1) translateX(3px);
   }
 }
+// MEDIAQUERY
+@media only screen and (min-width: 1600px) {
+  .container_top {
+    width: 45%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .container_top h1 {
+    margin-right: 4rem;
+  }
+  .container_bottom {
+    width: 45%;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .container_bottom .card {
+    flex-basis: calc((100% / 3) - 30px);
+  }
+  .box-start,
+  .box-end {
+    width: 500px;
+    height: 320px;
+  }
+  .mouth {
+    width: 90px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .container_bottom .card {
+    flex-basis: calc((100% / 2) - 30px);
+  }
+  .container_top .choiceBox {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+  .container_top .choiceBox_select {
+    margin: 0 0 1rem 0;
+  }
+  .box-start,
+  .box-end {
+    width: 400px;
+    height: 220px;
+  }
+  .text-crocodile {
+    font-size: large;
+  }
+  .mouth {
+    width: 70px;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .box-start,
+  .box-end {
+    width: 300px;
+    height: 120px;
+  }
+  .text-crocodile {
+    font-size: small;
+    margin: 0 4rem 0 4rem;
+    padding: 0.2rem;
+  }
+  .mouth {
+    width: 50px;
+  }
+}
 </style>
