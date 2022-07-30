@@ -33,7 +33,7 @@
       <div class="container_bottom">
         <!-- CARDS -->
         <!-- run a v-for on the gamingCardArray to show cards and added the click event -->
-        <div :id="`card-${key}`" class="card" tabindex="0" v-for="(card, key) in gamingCardsArray" :key="key" @click="selectCard(card, key)" @keyup.enter="selectCard(card, key)">
+        <div :id="`card-${key}`" class="card bgCard" tabindex="0" v-for="(card, key) in gamingCardsArray" :key="key" @click="selectCard(card, key)" @keyup.enter="selectCard(card, key)">
           <img class="card_img" :id="`ab-${key}`" :src="require(`@/assets/img/${card.img}`)" alt="Card-img">
         </div>
       </div>
@@ -66,6 +66,8 @@ export default {
       comparisonArray: [],
       // array of img ids to change the display mode of the imgs if the imgs selected are not the same
       idArray: [],
+      // array of card ids to change the bg mode of the card if the imgs selected are not the same
+      idCardArray: [],
       // array for the ending of the game
       endingArray: [],
       // array for the gaming cards
@@ -307,8 +309,12 @@ export default {
       if (card.selected == false) {
         // change selected value of the card 
         card.selected = true; 
+        // remove bgCard class
+        document.getElementById(`card-${key}`).classList.remove('bgCard');
         // change the display mode of the card's img
         document.getElementById(`ab-${key}`).style.display = "inline";
+        // push the id of the card in the idCard array
+        this.idCardArray.push(`card-${key}`);
         // push the id of the img in the ids array
         this.idArray.push(`ab-${key}`);
         // push the obj in the comparison array
@@ -321,6 +327,8 @@ export default {
             this.endingArray.push(this.comparisonArray[0], this.comparisonArray[1]);
             // remove the objts from comparisonArray
             this.comparisonArray.splice(0, 2);
+            // remove the ids Card from idCardArray
+            this.idCardArray.splice(0, 2);
             // remove the ids from idsArray
             this.idArray.splice(0, 2);
             // if the number of obj in the endingArray is the same of the cardsNumber the game is ended and ending-crocodile will be shown
@@ -336,6 +344,11 @@ export default {
               // change the display imgs of both selected cards to none
               document.getElementById(this.idArray[0]).style.display = "none";
               document.getElementById(this.idArray[1]).style.display = "none";
+              // add the bgCard class to selected cards
+              document.getElementById(this.idCardArray[0]).classList.add('bgCard');
+              document.getElementById(this.idCardArray[1]).classList.add('bgCard');
+              // remove the ids from idCardArray
+              this.idCardArray.splice(0, 2);
               // remove the ids from idArray
               this.idArray.splice(0, 2);
             }, 1000);
@@ -355,16 +368,22 @@ export default {
         if (!this.endingArray.includes(card)) {
           // remove the objts from comparisonArray
           this.comparisonArray.splice(0, 1);
+          // remove the idCard from idCardArray
+          this.idCardArray.splice(0, 1);
           // remove the id from idArray
           this.idArray.splice(0, 1);
           // change the card selected value in false
           card.selected = false;
+          // add the card class for bg
+          document.getElementById(`card-${key}`).classList.add('bgCard');
           // change the card img display mode in none
           document.getElementById(`ab-${key}`).style.display = "none";
         // if the card is already matched
         } else {
+          // add a class for the animation
           document.getElementById(`card-${key}`).classList.add('cardAlreadySelected');
           setTimeout(() => {
+            // remove the same class for animation
             document.getElementById(`card-${key}`).classList.remove('cardAlreadySelected');
           }, 1500);
         }
@@ -589,7 +608,6 @@ export default {
   flex-basis: calc((100% / 6) - 30px);
   height: 100px;
   margin: 15px;
-  background-color: #219F94;
   border-radius: 10px;
   box-shadow: 5px 5px 2px #C1DEAE;
   overflow: hidden;
@@ -612,6 +630,9 @@ export default {
   object-fit: cover;
   object-position: center;
   display: none;
+}
+.bgCard {
+  background-color: #219F94;
 }
 
 // ENDING CROCODILE
