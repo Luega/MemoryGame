@@ -73,197 +73,197 @@ export default {
       // array for all the cards
       crocodilesArray: [
         {
-          img: "cartoon-crocodile-vector-21277180.jpg",
+          img: "croc1.jpg",
           selected: false,
         },
         {
-          img: "cartoon-crocodile-vector-21277180.jpg",
+          img: "croc1.jpg",
           selected: false,
         },
         {
-          img: "posters-krokodil.jpg.jpg",
+          img: "croc2.png",
           selected: false,
         },
         {
-          img: "posters-krokodil.jpg.jpg",
+          img: "croc2.png",
           selected: false,
         },
         {
-          img: "gaetano-cessati-YOX8ZMTo7hk-unsplash.jpg",
+          img: "croc3.jpg",
           selected: false,
         },
         {
-          img: "gaetano-cessati-YOX8ZMTo7hk-unsplash.jpg",
+          img: "croc3.jpg",
           selected: false,
         },
         {
-          img: "jack-kelly-gAvQfrHwbgY-unsplash.jpg",
+          img: "croc4.jpg",
           selected: false,
         },
         {
-          img: "jack-kelly-gAvQfrHwbgY-unsplash.jpg",
+          img: "croc4.jpg",
           selected: false,
         },
         {
-          img: "lisa-yount-POKb4uUOizU-unsplash.jpg",
+          img: "croc5.jpg",
           selected: false,
         },
         {
-          img: "lisa-yount-POKb4uUOizU-unsplash.jpg",
+          img: "croc5.jpg",
           selected: false,
         },
         {
-          img: "rae-wallis-0P0_fMu-XFs-unsplash.jpg",
+          img: "croc6.jpg",
           selected: false,
         },
         {
-          img: "rae-wallis-0P0_fMu-XFs-unsplash.jpg",
+          img: "croc6.jpg",
           selected: false,
         },
         {
-          img: "shelly-collins-YppMBEPyfFQ-unsplash.jpg",
+          img: "croc7.jpg",
           selected: false,
         },
         {
-          img: "shelly-collins-YppMBEPyfFQ-unsplash.jpg",
+          img: "croc7.jpg",
           selected: false,
         },
         {
-          img: "simon-watkinson-qdg2Hxyjz4M-unsplash.jpg",
+          img: "croc8.jpg",
           selected: false,
         },
         {
-          img: "simon-watkinson-qdg2Hxyjz4M-unsplash.jpg",
+          img: "croc8.jpg",
           selected: false,
         },
         {
-          img: "simon-watkinson-qdg2Hxyjz4M-unsplash.jpg",
+          img: "croc9.jpg",
           selected: false,
         },
         {
-          img: "simon-watkinson-qdg2Hxyjz4M-unsplash.jpg",
+          img: "croc9.jpg",
           selected: false,
         },
         {
-          img: "simon-watkinson-qdg2Hxyjz4M-unsplash.jpg",
+          img: "croc10.jpg",
           selected: false,
         },
         {
-          img: "simon-watkinson-qdg2Hxyjz4M-unsplash.jpg",
+          img: "croc10.jpg",
           selected: false,
         },
         {
-          img: "simon-watkinson-qdg2Hxyjz4M-unsplash.jpg",
+          img: "croc11.jpg",
           selected: false,
         },
         {
-          img: "simon-watkinson-qdg2Hxyjz4M-unsplash.jpg",
+          img: "croc11.jpg",
           selected: false,
         },
         {
-          img: "simon-watkinson-qdg2Hxyjz4M-unsplash.jpg",
+          img: "croc12.jpg",
           selected: false,
         },
         {
-          img: "simon-watkinson-qdg2Hxyjz4M-unsplash.jpg",
+          img: "croc12.jpg",
           selected: false,
         }
       ],
       dogsArray: [
         {
-          img: "dog-1.jpg",
+          img: "dog1.jpg",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog1.jpg",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog2.jpg",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog2.jpg",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog3.jpeg",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog3.jpeg",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog4.jpg",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog4.jpg",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog5.png",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog5.png",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog6.jpg",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog6.jpg",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog7.jpg",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog7.jpg",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog8.jpg",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog8.jpg",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog9.png",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog9.png",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog10.jpg",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog10.jpg",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog11.jpg",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog11.jpg",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog12.jpg",
           selected: false,
         },
         {
-          img: "dog-1.jpg",
+          img: "dog12.jpg",
           selected: false,
         },
       ]
@@ -609,6 +609,8 @@ export default {
 .card_img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: center;
   display: none;
 }
 
