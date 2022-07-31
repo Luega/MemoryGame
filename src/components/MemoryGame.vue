@@ -914,14 +914,14 @@ export default {
   .container_bottom .card {
     flex-basis: calc((100% / 3) - 30px);
   }
-  // .box-start,
-  // .box-end {
-  //   width: 550px;
-  //   height: 370px;
-  // }
-  // .mouth {
-  //   width: 90px;
-  // }
+  .box-start,
+  .box-end {
+    width: 550px;
+    height: 370px;
+  }
+  .mouth {
+    width: 90px;
+  }
 }
 @media only screen and (max-width: 600px) {
   .container_bottom .card {
@@ -935,31 +935,31 @@ export default {
   .container_top .choiceBox_select {
     margin: 0 0 1rem 0;
   }
-  // .box-start,
-  // .box-end {
-  //   width: 450px;
-  //   height: 270px;
-  // }
-  // .text-crocodile {
-  //   font-size: large;
-  // }
-  // .mouth {
-  //   width: 70px;
-  // }
+  .box-start,
+  .box-end {
+    width: 500px;
+    height: 320px;
+  }
+  .text-crocodile {
+    font-size: large;
+  }
+  .mouth {
+    width: 70px;
+  }
 }
-// @media only screen and (max-width: 420px) {
-//   .box-start,
-//   .box-end {
-//     width: 350px;
-//     height: 170px;
-//   }
-//   .text-crocodile {
-//     font-size: small;
-//     margin: 0 4rem 0 4rem;
-//     padding: 0.2rem;
-//   }
-//   .mouth {
-//     width: 50px;
-//   }
-// }
+@media only screen and (max-width: 420px) {
+  .box-start,
+  .box-end {
+    width: 350px;
+    height: 170px;
+  }
+  .text-crocodile {
+    font-size: small;
+    margin: 0 4rem 0 4rem;
+    padding: 0.2rem;
+  }
+  .mouth {
+    width: 50px;
+  }
+}
 </style>
