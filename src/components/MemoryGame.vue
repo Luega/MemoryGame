@@ -916,8 +916,8 @@ export default {
   }
   .box-start,
   .box-end {
-    width: 500px;
-    height: 320px;
+    width: 550px;
+    height: 370px;
   }
   .mouth {
     width: 90px;
@@ -937,8 +937,8 @@ export default {
   }
   .box-start,
   .box-end {
-    width: 400px;
-    height: 220px;
+    width: 450px;
+    height: 270px;
   }
   .text-crocodile {
     font-size: large;
@@ -950,8 +950,8 @@ export default {
 @media only screen and (max-width: 420px) {
   .box-start,
   .box-end {
-    width: 300px;
-    height: 120px;
+    width: 350px;
+    height: 170px;
   }
   .text-crocodile {
     font-size: small;
