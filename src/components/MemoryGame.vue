@@ -273,8 +273,8 @@ export default {
   },
   beforeMount () {
     // add the cardsNumber value and player value in local storage to the cardsNumber value (for the end of the game) and player in data
-    this.player = localStorage.getItem('player');
-    this.cardsNumber = localStorage.getItem('cardsNumber');
+    this.player = sessionStorage.getItem('player');
+    this.cardsNumber = sessionStorage.getItem('cardsNumber');
     //create the gamingCardsArray with the number of cards and for the player that are stored in the local storage (to show the cards immediately)
     // use the crocodile array if lele is the player
     if (this.player == 'lele') {
@@ -298,8 +298,8 @@ export default {
     }
   },
   mounted () {
-    // if localStorage is null it will show the welcome crocodile in the bottom container
-    if (localStorage.getItem('cardsNumber') === null) {
+    // if sessionStorage is null it will show the welcome crocodile in the bottom container
+    if (sessionStorage.getItem('cardsNumber') === null) {
       this.showStartingCroc();
     }
   },
@@ -391,7 +391,7 @@ export default {
     },
     createRandomArray() {
       // if in local storage there isn't cardsNumber stored 
-      if (localStorage.getItem('cardsNumber') === null) {
+      if (sessionStorage.getItem('cardsNumber') === null) {
         // set the cardsNumber value in the data with the value of the first choice and the first player (it will start with the basic level and first player)
         if (this.player == null && this.level == null) {
           this.player = this.players[0].value;
@@ -404,9 +404,9 @@ export default {
           this.cardsNumber = this.levels[0].value;
         }
         // set in local Storage the player
-        localStorage.setItem('player', this.player);
+        sessionStorage.setItem('player', this.player);
         // set in local Storage the cards Number
-        localStorage.setItem('cardsNumber', this.cardsNumber);
+        sessionStorage.setItem('cardsNumber', this.cardsNumber);
         // use the crocodile array if lele is the player
         if (this.player == 'lele') {
           // for loop to create, from the crocodilesArray, the gamingCardsArray with the right number of cards related with the choosen level 
@@ -429,12 +429,12 @@ export default {
         }
       // if in local storage there is cardsNumber stored (this means that we want to change level)
       } else {
-        // clear the localStorage from the old cardsNumber value
-        localStorage.clear();
-        // add the new cardsNumber Value and player in the localStorage
-        localStorage.setItem('cardsNumber', this.cardsNumber);
-        localStorage.setItem('player', this.player);
-        // reload the page (the new cardsNumber in localStorage will be used beforeMount)
+        // clear the sessionStorage from the old cardsNumber value
+        sessionStorage.clear();
+        // add the new cardsNumber Value and player in the sessionStorage
+        sessionStorage.setItem('cardsNumber', this.cardsNumber);
+        sessionStorage.setItem('player', this.player);
+        // reload the page (the new cardsNumber in sessionStorage will be used beforeMount)
         location.reload();
       }
     },
